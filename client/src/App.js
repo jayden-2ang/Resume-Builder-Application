@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import Personal from './components/personal';
+import Education from './components/education';
+import Skills from './components/skills';
+import Projects from './components/projects';
+import Work from './components/work';
+import Volunteer from './components/volunteer';
 import './App.css';
 
 function App(data) {
@@ -26,6 +31,22 @@ function App(data) {
       address={e.address}
       enrollment={e.enrollment}
       study={e.study}
+    />
+  ));
+
+  const skillList = skills.map((s) => (
+    <Skills 
+      html={s.html}
+      css={s.css}
+      js={s.js}
+    />
+  ));
+
+  const projectList = projects.map((pj) => (
+    <Projects 
+      html={s.html}
+      css={s.css}
+      js={s.js}
     />
   ));
 

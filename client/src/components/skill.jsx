@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Skills(props) {
+function Skill(props) {
   const [skill, setSkill] = useState('');
 
   function handleChange(event){
@@ -32,4 +32,4 @@ function Skills(props) {
   );
 }
 
-export default Skills;
+export default Skill;

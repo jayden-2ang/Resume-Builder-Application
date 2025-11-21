@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Personal from './components/personal';
 import Education from './components/education';
-import Skills from './components/skills';
-import Projects from './components/projects';
+import Skill from './components/skill';
+import Project from './components/project';
 import Work from './components/work';
 import Volunteer from './components/volunteer';
 import axios from 'axios';
@@ -10,8 +10,8 @@ import axios from 'axios';
 function App(data) {
   const [personal, setPersonal] = useState([]);
   const [education, setEducation] = useState([]);
-  const [skills, setSkills] = useState([]);
-  const [projects, setProjects] = useState([]);
+  const [skill, setSkill] = useState([]);
+  const [project, setProject] = useState([]);
   const [work, setWork] = useState([]);
   const [volunteer, setVolunteer] = useState([]);
 
@@ -37,20 +37,21 @@ function App(data) {
     />
   ));
 
-  const skillList = skills.map((s) => (
-    <Skills 
+  const skillList = skill.map((s) => (
+    <Skill 
       id={s.id}
       skill={s.skill}
     />
   ));
 
-  const projectList = projects.map((pj) => (
-    <Projects 
+  const projectList = project.map((pj) => (
+    <Project
       id={pj.id}
       title={pj.title}
       institute={pj.institute}
       course={pj.course}
-      term={pj.term}
+      termStart={pj.termStart}
+      termEnd={pj.termEnd}
       description={pj.description}
     />
   ));
@@ -99,14 +100,19 @@ function App(data) {
   };
 
   const addSkill = (skill) => {
-    setSkills([...skill, skill]);
+    setSkill([...skill, skill]);
+  };
+
+  const addProject = (project) => {
+    setProject([...project, project]);
   };
 
   return (
     <div>
       <Personal addPersonal={addPersonal} />
       <Education addEducation={addEducation} />
-      <Skills addSkill={addSkill} />
+      <Skill addSkill={addSkill} />
+      <Project addProject={addProject} />
     </div>
   );
 }

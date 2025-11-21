@@ -5,18 +5,19 @@ import Skills from './components/skills';
 import Projects from './components/projects';
 import Work from './components/work';
 import Volunteer from './components/volunteer';
-import './App.css';
+import axios from 'axios';
 
-function App(data) {
-  const [personal, setPersonal] = useState(data.personal);
-  const [education, setEducation] = useState(data.education);
-  const [skills, setSkills] = useState(data.skills);
-  const [projects, setProjects] = useState(data.projects);
-  const [work, setWork] = useState(data.work);
-  const [volunteer, setVolunteer] = useState(data.volunteer);
+/*function App(data) {
+  const [personal, setPersonal] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [work, setWork] = useState([]);
+  const [volunteer, setVolunteer] = useState([]);
 
   const personalList = personal.map((p) => (
     <Personal 
+      id={p.id}
       name={p.name}
       email={p.email}
       phone={p.phone}
@@ -27,6 +28,7 @@ function App(data) {
 
   const educationList = education.map((e) => (
     <Education 
+      id={e.id}
       institute={e.institute}
       address={e.address}
       enrollment={e.enrollment}
@@ -36,6 +38,7 @@ function App(data) {
 
   const skillList = skills.map((s) => (
     <Skills 
+      id={s.id}
       html={s.html}
       css={s.css}
       js={s.js}
@@ -44,20 +47,64 @@ function App(data) {
 
   const projectList = projects.map((pj) => (
     <Projects 
-      html={s.html}
-      css={s.css}
-      js={s.js}
+      id={pj.id}
+      title={pj.title}
+      institute={pj.institute}
+      course={pj.course}
+      term={pj.term}
+      description={pj.description}
     />
   ));
 
-  }
+  const workList = work.map((w) => (
+    <Work
+      id={w.id}
+      position={w.position}
+      company={w.company}
+      time={w.time}
+      responsibilities={w.responsibilities}
+    />
+  ));
+
+  const volunteerList = volunteer.map((v) => (
+    <Volunteer
+      id={v.id}
+      position={v.position}
+      company={v.company}
+      time={v.time}
+      responsibilities={v.responsibilities}
+    />
+  ));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
+    <div className="">
+      <h1>Resume Builder App</h1>
+      <Form addTask={addTask} />
+      <h2 id="list-heading">{headingText}</h2>
+      <ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading">
+        {taskList}
+      </ul>
+    </div>
+  );
+}*/
+
+export default App;
+
+
+function App() {
+  const [personal, setPersonal] = useState([]);
+
+  const addPersonal = (personal) => {
+    setPersonal([...personal, personal]);
+  };
+
+  return (
+    <div>
+      <Personal addPersonal={addPersonal} />
+      
     </div>
   );
 }
-
-export default App;

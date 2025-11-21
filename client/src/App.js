@@ -7,7 +7,7 @@ import Work from './components/work';
 import Volunteer from './components/volunteer';
 import axios from 'axios';
 
-/*function App(data) {
+function App(data) {
   const [personal, setPersonal] = useState([]);
   const [education, setEducation] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -15,7 +15,7 @@ import axios from 'axios';
   const [work, setWork] = useState([]);
   const [volunteer, setVolunteer] = useState([]);
 
-  const personalList = personal.map((p) => (
+  /*const personalList = personal.map((p) => (
     <Personal 
       id={p.id}
       name={p.name}
@@ -31,7 +31,8 @@ import axios from 'axios';
       id={e.id}
       institute={e.institute}
       address={e.address}
-      enrollment={e.enrollment}
+      enrollStart={e.enrollStart}
+      enrollEnd={e.enrollEnd}
       study={e.study}
     />
   ));
@@ -91,20 +92,20 @@ import axios from 'axios';
   );
 }*/
 
-export default App;
-
-
-function App() {
-  const [personal, setPersonal] = useState([]);
-
   const addPersonal = (personal) => {
     setPersonal([...personal, personal]);
+  };
+
+  const addEducation = (education) => {
+    setEducation([...education, education]);
   };
 
   return (
     <div>
       <Personal addPersonal={addPersonal} />
-      
+      <Education addEducation={addEducation} />
     </div>
   );
 }
+
+export default App;

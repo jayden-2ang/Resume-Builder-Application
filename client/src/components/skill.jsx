@@ -17,7 +17,7 @@ function Skill(props) {
     <form onSubmit={handleSubmit}>
       <h2>Add New Skill</h2>
       <label>
-        Skill:
+        Skill(s):
         <input
           type="text"
           value={skill}

@@ -52,7 +52,7 @@ function Education(props) {
       <br /><br />
 
       <label>
-        Address
+        Address:
         <input
           type="text"
           name="address"

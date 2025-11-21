@@ -1,23 +1,19 @@
 import { useState } from 'react';
 
-function Project(props) {
-  const [title, setTitle] = useState('');
-  const [institute, setInstitute] = useState('');
-  const [course, setCourse] = useState('');
+function Work(props) {
+  const [position, setPosition] = useState('');
+  const [company, setCompany] = useState('');
   const [termStart, setTermStart] = useState('');
   const [termEnd, setTermEnd] = useState('');
-  const [description, setDescription] = useState('');
+  const [responsibilities, setResponsibilities] = useState('');
 
   function handleChange(event){
     const { name, value } = event.target;
-    if (name === 'title') {
-      setTitle(value);
+    if (name === 'position') {
+      setPosition(value);
     } 
-    else if (name === 'institute') {
-      setInstitute(value);
-    } 
-    else if (name === 'course') {
-      setCourse(value);
+    else if (name === 'company') {
+      setCompany(value);
     } 
     else if (name === 'termStart') {
       setTermStart(value);
@@ -25,31 +21,30 @@ function Project(props) {
     else if (name === 'termEnd') {
       setTermEnd(value);
     } 
-    else if (name === 'description') {
-      setDescription(value);
+    else if (name === 'responsibilities') {
+      setResponsibilities(value);
     }
   }
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addProject(title, institute, course, termStart, termEnd, description);
-    setTitle("");
-    setInstitute("");
-    setCourse("");
+    props.addWork(position, company, termStart, termEnd, responsibilities);
+    setPosition("");
+    setCompany("");
     setTermStart("");
     setTermEnd("");
-    setDescription("");
+    setResponsibilities("");
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add New Project</h2>
+      <h2>Add Work Experience</h2>
       <label>
-        Project Title:
+        Job Position:
         <input
           type="text"
-          name="title"
-          value={title}
+          name="position"
+          value={position}
           onChange={handleChange}
           required
         />
@@ -57,23 +52,11 @@ function Project(props) {
       <br /><br />
 
       <label>
-        Institute:
+        Company Name:
         <input
           type="text"
-          name="institute"
-          value={institute}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
-
-      <label>
-        Course Name:
-        <input
-          type="text"
-          name="course"
-          value={course}
+          name="company"
+          value={company}
           onChange={handleChange}
           required
         />
@@ -105,11 +88,11 @@ function Project(props) {
       <br /><br />
 
       <label>
-        Description:
+        Responsibilities:
         <input
           type="text"
-          name="description"
-          value={description}
+          name="responsibilities"
+          value={responsibilities}
           onChange={handleChange}
           required
         />
@@ -121,4 +104,4 @@ function Project(props) {
   );
 }
 
-export default Project;
+export default Work;

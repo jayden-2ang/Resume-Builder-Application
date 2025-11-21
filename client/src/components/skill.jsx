@@ -9,7 +9,7 @@ function Skill(props) {
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addEducation(skill);
+    props.addSkill(skill);
     setSkill("");
   }
 

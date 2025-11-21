@@ -7,7 +7,7 @@ import Work from './components/work';
 import Volunteer from './components/volunteer';
 import axios from 'axios';
 
-function App(data) {
+function App(props) {
   const [personal, setPersonal] = useState([]);
   const [education, setEducation] = useState([]);
   const [skill, setSkill] = useState([]);
@@ -61,7 +61,8 @@ function App(data) {
       id={w.id}
       position={w.position}
       company={w.company}
-      time={w.time}
+      termStart={w.termStart}
+      termEnd={w.termEnd}
       responsibilities={w.responsibilities}
     />
   ));
@@ -70,8 +71,10 @@ function App(data) {
     <Volunteer
       id={v.id}
       position={v.position}
-      company={v.company}
+      organization={v.organization}
       time={v.time}
+      termStart={w.termStart}
+      termEnd={w.termEnd}
       responsibilities={v.responsibilities}
     />
   ));
@@ -91,20 +94,28 @@ function App(data) {
   );
 }*/
 
-  const addPersonal = (personal) => {
-    setPersonal([...personal, personal]);
+  const addPersonal = (newPersonal) => {
+    setPersonal((prev) => [...prev, newPersonal]);
   };
 
-  const addEducation = (education) => {
-    setEducation([...education, education]);
+  const addEducation = (newEducation) => {
+    setEducation((prev) => [...prev, newEducation]);
   };
 
-  const addSkill = (skill) => {
-    setSkill([...skill, skill]);
+  const addSkill = (newSkill) => {
+    setSkill((prev) => [...prev, newSkill]);
   };
 
-  const addProject = (project) => {
-    setProject([...project, project]);
+  const addProject = (newProject) => {
+    setProject((prev) => [...prev, newProject]);
+  };
+
+  const addWork = (newWork) => {
+    setWork((prev) => [...prev, newWork]);
+  };
+
+  const addVolunteer = (newVolunteer) => {
+    setVolunteer((prev) => [...prev, newVolunteer]);
   };
 
   return (
@@ -113,6 +124,8 @@ function App(data) {
       <Education addEducation={addEducation} />
       <Skill addSkill={addSkill} />
       <Project addProject={addProject} />
+      <Work addWork={addWork} />
+      <Volunteer addVolunteer={addVolunteer} />
     </div>
   );
 }

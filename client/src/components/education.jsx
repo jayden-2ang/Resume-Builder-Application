@@ -8,11 +8,22 @@ function Education(props) {
   const [study, setStudy] = useState('');
 
   function handleChange(event){
-    setInstitute(event.target.value);
-    setAddress(event.target.value);
-    setEnrollStart(event.target.value);
-    setEnrollEnd(event.target.value);
-    setStudy(event.target.value);
+    const { name, value } = event.target;
+    if (name === 'institute') {
+      setInstitute(value);
+    } 
+    else if (name === 'address') {
+      setAddress(value);
+    } 
+    else if (name === 'enrollStart') {
+      setEnrollStart(value);
+    } 
+    else if (name === 'enrollEnd') {
+      setEnrollEnd(value);
+    } 
+    else if (name === 'study') {
+      setStudy(value);
+    }
   }
 
   function handleSubmit(event){
@@ -32,6 +43,7 @@ function Education(props) {
         Institution Name:
         <input
           type="text"
+          name="institute"
           value={institute}
           onChange={handleChange}
           required
@@ -43,6 +55,7 @@ function Education(props) {
         Address
         <input
           type="text"
+          name="address"
           value={address}
           onChange={handleChange}
           required
@@ -54,6 +67,7 @@ function Education(props) {
         Enrollment Start Date:
         <input
           type="date"
+          name="enrollStart"
           value={enrollStart}
           onChange={handleChange}
           required
@@ -65,6 +79,7 @@ function Education(props) {
         Enrollment End Date:
         <input
           type="date"
+          name="enrollEnd"
           value={enrollEnd}
           onChange={handleChange}
           required
@@ -76,6 +91,7 @@ function Education(props) {
         Field of Study:
         <input
           type="text"
+          name="study"
           value={study}
           onChange={handleChange}
           required

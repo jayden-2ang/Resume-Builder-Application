@@ -8,11 +8,22 @@ function Personal(props) {
   const [link, setLink] = useState('');
 
   function handleChange(event){
-    setName(event.target.value);
-    setEmail(event.target.value);
-    setPhone(event.target.value);
-    setAddress(event.target.value);
-    setLink(event.target.value);
+    const { name, value } = event.target;
+    if (name === 'name') {
+      setName(value);
+    } 
+    else if (name === 'email') {
+      setEmail(value);
+    } 
+    else if (name === 'phone') {
+      setPhone(value);
+    } 
+    else if (name === 'address') {
+      setAddress(value);
+    } 
+    else if (name === 'link') {
+      setLink(value);
+    }
   }
 
   function handleSubmit(event){
@@ -33,6 +44,7 @@ function Personal(props) {
         <input
           type="text"
           id="p-name"
+          name="name"
           value={name}
           onChange={handleChange}
           required
@@ -44,6 +56,7 @@ function Personal(props) {
         Email:
         <input
           type="text"
+          name="email"
           value={email}
           onChange={handleChange}
           required
@@ -55,6 +68,7 @@ function Personal(props) {
         Phone:
         <input
           type="text"
+          name="phone"
           value={phone}
           onChange={handleChange}
           required
@@ -66,6 +80,7 @@ function Personal(props) {
         Address:
         <input
           type="text"
+          name="address"
           value={address}
           onChange={handleChange}
           required
@@ -77,6 +92,7 @@ function Personal(props) {
         Link:
         <input
           type="text"
+          name="link"
           value={link}
           onChange={handleChange}
           required

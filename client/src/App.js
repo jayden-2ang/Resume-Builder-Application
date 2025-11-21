@@ -40,9 +40,7 @@ function App(data) {
   const skillList = skills.map((s) => (
     <Skills 
       id={s.id}
-      html={s.html}
-      css={s.css}
-      js={s.js}
+      skill={s.skill}
     />
   ));
 
@@ -100,10 +98,15 @@ function App(data) {
     setEducation([...education, education]);
   };
 
+  const addSkill = (skill) => {
+    setSkills([...skill, skill]);
+  };
+
   return (
     <div>
       <Personal addPersonal={addPersonal} />
       <Education addEducation={addEducation} />
+      <Skills addSkill={addSkill} />
     </div>
   );
 }

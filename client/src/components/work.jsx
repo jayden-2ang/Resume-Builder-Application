@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-function Work(props) {
+function Work({ addWork }) {
   const [position, setPosition] = useState('');
   const [company, setCompany] = useState('');
   const [termStart, setTermStart] = useState('');
   const [termEnd, setTermEnd] = useState('');
   const [responsibilities, setResponsibilities] = useState('');
+  const [employed, setEmployed] = useState(false);
 
   function handleChange(event){
     const { name, value } = event.target;
@@ -24,16 +25,28 @@ function Work(props) {
     else if (name === 'responsibilities') {
       setResponsibilities(value);
     }
+    else if (name === 'employed') {
+      setEmployed(event.target.checked);
+      setTermEnd('');
+    }
   }
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addWork(position, company, termStart, termEnd, responsibilities);
+    const newWork = {
+      position,
+      company, 
+      termStart,
+      termEnd: employed ? 'Present' : termEnd,
+      responsibilities,
+    };
+    addWork(newWork);
     setPosition("");
     setCompany("");
     setTermStart("");
     setTermEnd("");
     setResponsibilities("");
+    setEmployed(false);
   }
 
   return (
@@ -64,9 +77,9 @@ function Work(props) {
       <br /><br />
 
       <label>
-        Term Year Start:
+        Date Start:
         <input
-          type="text"
+          type="date"
           name="termStart"
           value={termStart}
           onChange={handleChange}
@@ -75,14 +88,28 @@ function Work(props) {
       </label>
       <br /><br />
 
+      {!employed && (
+        <>
       <label>
-        Term Year End (Or expected):
+        Date End:
         <input
-          type="text"
+          type="date"
           name="termEnd"
           value={termEnd}
           onChange={handleChange}
           required
+        />
+      </label><br />
+      </>
+      )}
+
+      <label>
+        Still Employed?:
+        <input
+          type="checkbox"
+          name="employed"
+          checked={employed}
+          onChange={handleChange}
         />
       </label>
       <br /><br />

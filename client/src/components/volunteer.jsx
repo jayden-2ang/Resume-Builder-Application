@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-function Volunteer(props) {
+function Volunteer({ addVolunteer }) {
 	const [position, setPosition] = useState('');
 	const [organization, setOrganization] = useState('');
 	const [startTerm, setStartTerm] = useState('');
 	const [endTerm, setEndTerm] = useState('');
 	const [responsibilities, setResponsibilities] = useState('');
+	const [current, setCurrent] = useState(false);
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -24,16 +25,28 @@ function Volunteer(props) {
 		else if (name === 'responsibilities') {
 			setResponsibilities(value);
 		}
+		else if (name === 'current') {
+			setCurrent(event.target.checked);
+			setEndTerm('');
+		}
 	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		if (props.addVolunteer) props.addVolunteer({ position, organization, startTerm, endTerm, responsibilities });
+		const newVolunteer = {
+			position,
+			organization,
+			startTerm,
+			endTerm: current ? 'Present' : endTerm,
+			responsibilities,
+		};
+		addVolunteer(newVolunteer);
 		setPosition('');
 		setOrganization('');
 		setStartTerm('');
 		setEndTerm('');
 		setResponsibilities('');
+		setCurrent(false);
 	}
 
 	return (
@@ -67,7 +80,7 @@ function Volunteer(props) {
 				Start Term:
 				<input 
 				name="startTerm" 
-				type="text" 
+				type="date" 
 				value={startTerm} 
 				onChange={handleChange} 
 				required 
@@ -75,12 +88,28 @@ function Volunteer(props) {
 			</label>
 			<br /><br />
 
+			{!current && (
+				<>
+				<label>
+					Date End:
+					<input 
+					name="endTerm" 
+					type="date" 
+					value={endTerm} 
+					onChange={handleChange} 
+					required 
+					/>
+				</label>
+				<br /><br />
+				</>
+			)}
+			
 			<label>
-				End Term:
+				Still Volunteering?:
 				<input 
-				name="endTerm" 
-				type="text" 
-				value={endTerm} 
+				name="current" 
+				type="checkbox" 
+				checked={current} 
 				onChange={handleChange} 
 				required 
 				/>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Personal(props) {
+function Personal({ addPersonal }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -28,7 +28,14 @@ function Personal(props) {
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addPersonal(name, email, phone, address, link);
+    const newPersonal = {
+      name, 
+      email,
+      phone,
+      address,
+      link,
+    };
+    addPersonal(newPersonal);
     setName("");
     setEmail("");
     setPhone("");

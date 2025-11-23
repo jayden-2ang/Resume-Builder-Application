@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-function Project(props) {
+function Project({ addProject }) {
   const [title, setTitle] = useState('');
   const [institute, setInstitute] = useState('');
   const [course, setCourse] = useState('');
   const [termStart, setTermStart] = useState('');
   const [termEnd, setTermEnd] = useState('');
   const [description, setDescription] = useState('');
+  const [present, setPresent] = useState(false);
 
   function handleChange(event){
     const { name, value } = event.target;
@@ -28,17 +29,30 @@ function Project(props) {
     else if (name === 'description') {
       setDescription(value);
     }
+    else if (name === 'present'){
+      setPresent(event.target.checked);
+      setTermEnd('');
+    }
   }
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addProject(title, institute, course, termStart, termEnd, description);
+    const newProject = {
+      title,
+      institute,
+      course,
+      termStart,
+      termEnd,
+      description,
+    };
+    addProject(newProject);
     setTitle("");
     setInstitute("");
     setCourse("");
     setTermStart("");
     setTermEnd("");
     setDescription("");
+    setPresent(false);
   }
 
   return (
@@ -83,7 +97,7 @@ function Project(props) {
       <label>
         Term Year Start:
         <input
-          type="text"
+          type="date"
           name="termStart"
           value={termStart}
           onChange={handleChange}
@@ -92,12 +106,28 @@ function Project(props) {
       </label>
       <br /><br />
 
+      {!present && (
+				<>
       <label>
         Term Year End (Or expected):
         <input
-          type="text"
+          type="date"
           name="termEnd"
           value={termEnd}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <br /><br />
+      </>
+			)}
+
+      <label>
+        Still Working on it?:
+        <input
+          type="date"
+          name="present"
+          value={present}
           onChange={handleChange}
           required
         />

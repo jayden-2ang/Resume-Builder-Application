@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-function Education(props) {
+function Education({ addEducation }) {
   const [institute, setInstitute] = useState('');
   const [address, setAddress] = useState('');
   const [enrollStart, setEnrollStart] = useState('');
   const [enrollEnd, setEnrollEnd] = useState('');
   const [study, setStudy] = useState('');
+  const [present, setPresent] = useState(false);
 
   function handleChange(event){
     const { name, value } = event.target;
@@ -24,16 +25,28 @@ function Education(props) {
     else if (name === 'study') {
       setStudy(value);
     }
+    else if (name === 'present') {
+      setPresent(event.target.checked);
+			setEnrollEnd('');
+    }
   }
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addEducation(institute, address, enrollStart, enrollEnd, study);
+    const newEducation = {
+      institute,
+      address,
+      enrollStart,
+      enrollEnd: present ? 'Present' : enrollEnd,
+      study,
+    }
+    addEducation(newEducation);
     setInstitute("");
     setAddress("");
     setEnrollStart("");
     setEnrollEnd("");
     setStudy("");
+    setPresent(false);
   }
 
   return (
@@ -75,12 +88,28 @@ function Education(props) {
       </label>
       <br /><br />
 
+      {!present && (
+				<>
+        <label>
+          Enrollment End Date:
+          <input
+            type="date"
+            name="enrollEnd"
+            value={enrollEnd}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br /><br />
+      </>
+			)}
+
       <label>
-        Enrollment End Date:
+        Still Enrolled?:
         <input
-          type="date"
-          name="enrollEnd"
-          value={enrollEnd}
+          type="checkbox"
+          name="present"
+          value={present}
           onChange={handleChange}
           required
         />

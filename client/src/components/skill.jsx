@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Skill(props) {
+function Skill({ addSkill }) {
   const [skill, setSkill] = useState('');
 
   function handleChange(event){
@@ -9,7 +9,10 @@ function Skill(props) {
 
   function handleSubmit(event){
     event.preventDefault();
-    props.addSkill(skill);
+    const newSkill = {
+      skill,
+    };
+    addSkill(newSkill);
     setSkill("");
   }
 

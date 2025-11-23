@@ -15,7 +15,7 @@ function App(props) {
   const [work, setWork] = useState([]);
   const [volunteer, setVolunteer] = useState([]);
 
-  /*const personalList = personal.map((p) => (
+  const personalList = personal.map((p) => (
     <Personal 
       id={p.id}
       name={p.name}
@@ -73,26 +73,11 @@ function App(props) {
       position={v.position}
       organization={v.organization}
       time={v.time}
-      termStart={w.termStart}
-      termEnd={w.termEnd}
+      termStart={v.termStart}
+      termEnd={v.termEnd}
       responsibilities={v.responsibilities}
     />
   ));
-
-  return (
-    <div className="">
-      <h1>Resume Builder App</h1>
-      <Form addTask={addTask} />
-      <h2 id="list-heading">{headingText}</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading">
-        {taskList}
-      </ul>
-    </div>
-  );
-}*/
 
   const addPersonal = (newPersonal) => {
     setPersonal((prev) => [...prev, newPersonal]);
@@ -120,12 +105,14 @@ function App(props) {
 
   return (
     <div>
+      <h1>Resume Builder App</h1>
       <Personal addPersonal={addPersonal} />
       <Education addEducation={addEducation} />
       <Skill addSkill={addSkill} />
       <Project addProject={addProject} />
       <Work addWork={addWork} />
       <Volunteer addVolunteer={addVolunteer} />
+      <button type="submit">Generate Resume</button>
     </div>
   );
 }

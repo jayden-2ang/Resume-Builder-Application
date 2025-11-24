@@ -51,7 +51,29 @@ function App(props) {
     setVolunteer((prev) => [...prev, newVolunteer]);
   };
 
-  //const deletePersonal = ();
+  const deletePersonal = (personalToDelete) => {
+    setPersonal((prev) => prev.filter((_, index) => index != personalToDelete));
+  };
+
+  const deleteEducation = (educationToDelete) => {
+    setEducation((prev) => prev.filter((_, index) => index != educationToDelete));
+  };
+
+  const deleteSkill = (skillToDelete) => {
+    setSkill((prev) => prev.filter((_, index) => index != skillToDelete));
+  };
+
+  const deleteProject = (projectToDelete) => {
+    setProject((prev) => prev.filter((_, index) => index != projectToDelete));
+  };
+
+  const deleteWork = (workToDelete) => {
+    setWork((prev) => prev.filter((_, index) => index != workToDelete));
+  };
+
+  const deleteVolunteer = (volunteerToDelete) => {
+    setVolunteer((prev) => prev.filter((_, index) => index != volunteerToDelete));
+  };
 
   return (
     <div>
@@ -65,11 +87,17 @@ function App(props) {
       <div ref={printResume}>
         <View
           personal={personal}
+          deletePersonal={deletePersonal}
           education={education}
+          deleteEducation={deleteEducation}
           skills={skill}
+          deleteSkill={deleteSkill}
           projects={project}
+          deleteProject={deleteProject}
           work={work}
+          deleteWork={deleteWork}
           volunteer={volunteer}
+          deleteVolunteer={deleteVolunteer}
         />
         <button type="submit">Generate Resume to PDF</button>
       </div>

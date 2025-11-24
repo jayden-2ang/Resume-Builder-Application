@@ -5,7 +5,8 @@ function Work({ addWork }) {
   const [company, setCompany] = useState('');
   const [termStart, setTermStart] = useState('');
   const [termEnd, setTermEnd] = useState('');
-  const [responsibilities, setResponsibilities] = useState('');
+  const [responsibilities, setResponsibilities] = useState([]);
+	const [currResp, setCurrResp] = useState('');
   const [employed, setEmployed] = useState(false);
 
   function handleChange(event){
@@ -23,13 +24,20 @@ function Work({ addWork }) {
       setTermEnd(value);
     } 
     else if (name === 'responsibilities') {
-      setResponsibilities(value);
+      setCurrResp(value);
     }
     else if (name === 'employed') {
       setEmployed(event.target.checked);
       setTermEnd('');
     }
   }
+
+  function addResp() {
+		if (currResp.trim() != ''){
+		setResponsibilities([...responsibilities, currResp.trim()]);
+		setCurrResp('');
+		}
+	}
 
   function handleSubmit(event){
     event.preventDefault();
@@ -45,7 +53,8 @@ function Work({ addWork }) {
     setCompany("");
     setTermStart("");
     setTermEnd("");
-    setResponsibilities("");
+    setResponsibilities([]);
+    setCurrResp("");
     setEmployed(false);
   }
 
@@ -125,6 +134,19 @@ function Work({ addWork }) {
           required
         />
       </label>
+      <button type='button' onClick={addResp}>
+				Add Responsibility
+			</button>
+			<ul>
+				{responsibilities.map((desc, index) => (
+				<li key={index}>
+					{desc}
+					<button type="button" onClick={() => setResponsibilities(responsibilities.filter((_, i) => i !== index))}>
+					Delete
+					</button>
+				</li>
+				))}
+			</ul>
       <br /><br />
 
       <button type="submit">Add</button>

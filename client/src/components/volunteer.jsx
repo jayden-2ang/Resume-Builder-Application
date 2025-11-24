@@ -5,7 +5,8 @@ function Volunteer({ addVolunteer }) {
 	const [organization, setOrganization] = useState('');
 	const [startTerm, setStartTerm] = useState('');
 	const [endTerm, setEndTerm] = useState('');
-	const [responsibilities, setResponsibilities] = useState('');
+	const [responsibilities, setResponsibilities] = useState([]);
+	const [currResp, setCurrResp] = useState('');
 	const [current, setCurrent] = useState(false);
 
 	function handleChange(event) {
@@ -23,11 +24,18 @@ function Volunteer({ addVolunteer }) {
 			setEndTerm(value);
 		} 
 		else if (name === 'responsibilities') {
-			setResponsibilities(value);
+			setCurrResp(value);
 		}
 		else if (name === 'current') {
 			setCurrent(event.target.checked);
 			setEndTerm('');
+		}
+	}
+
+	function addResp() {
+		if (currResp.trim() != ''){
+		setResponsibilities([...responsibilities, currResp.trim()]);
+		setCurrResp('');
 		}
 	}
 
@@ -45,7 +53,8 @@ function Volunteer({ addVolunteer }) {
 		setOrganization('');
 		setStartTerm('');
 		setEndTerm('');
-		setResponsibilities('');
+		setResponsibilities([]);
+    	setCurrResp("");
 		setCurrent(false);
 	}
 
@@ -126,6 +135,19 @@ function Volunteer({ addVolunteer }) {
 				required 
 				/>
 			</label>
+			<button type='button' onClick={addResp}>
+				Add Responsibility
+			</button>
+			<ul>
+				{responsibilities.map((desc, index) => (
+				<li key={index}>
+					{desc}
+					<button type="button" onClick={() => setResponsibilities(responsibilities.filter((_, i) => i !== index))}>
+					Delete
+					</button>
+				</li>
+				))}
+			</ul>
 			<br /><br />
 
 			<button type="submit">Add</button>

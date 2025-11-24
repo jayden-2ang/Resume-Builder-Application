@@ -5,7 +5,8 @@ function Personal({ addPersonal }) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-  const [link, setLink] = useState('');
+  const [link, setLink] = useState([]);
+  const [currLink, setCurrLink] = useState('');
 
   function handleChange(event){
     const { name, value } = event.target;
@@ -22,7 +23,14 @@ function Personal({ addPersonal }) {
       setAddress(value);
     } 
     else if (name === 'link') {
-      setLink(value);
+      setCurrLink(value);
+    }
+  }
+
+  function addLink() {
+    if (currLink.trim() != ''){
+      setLink([...link, currLink.trim()]);
+      setCurrLink('');
     }
   }
 
@@ -40,7 +48,8 @@ function Personal({ addPersonal }) {
     setEmail("");
     setPhone("");
     setAddress("");
-    setLink("");
+    setLink([]);
+    setCurrLink("");
   }
 
   return (
@@ -100,11 +109,24 @@ function Personal({ addPersonal }) {
         <input
           type="text"
           name="link"
-          value={link}
+          value={currLink}
           onChange={handleChange}
           required
         />
       </label>
+      <button type='button' onClick={addLink}>
+        Add Link
+      </button>
+      <ul>
+        {link.map((desc, index) => (
+          <li key={index}>
+            {desc}
+            <button type="button" onClick={() => setLink(link.filter((_, i) => i !== index))}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
       <br /><br />
       <button type="submit">Add</button>
     </form>

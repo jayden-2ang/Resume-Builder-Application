@@ -1,4 +1,3 @@
-import React from 'react';
 import '../index.css';
 
 function View({ personal, education, skills, projects, work, volunteer }) {
@@ -10,7 +9,13 @@ function View({ personal, education, skills, projects, work, volunteer }) {
           <div key={index}>
             <strong>{p.name}</strong> <br />
             {p.address} | {p.phone} | {p.email} <br />
-            {p.link}
+            {p.link && p.link.length > 0 && (
+              <ul>
+                {p.link.map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>
@@ -39,32 +44,49 @@ function View({ personal, education, skills, projects, work, volunteer }) {
         <h2>Projects</h2>
         {projects.map((pj, index) => (
           <div key={index}>
-            <strong>{pj.title}</strong> ({pj.termStart} - {pj.termEnd}) <br />
-            {pj.description}
+            <strong>{pj.title}</strong> <br />
+            ({pj.termStart} - {pj.termEnd}) <br />
+            {pj.description && pj.description.length > 0 && (
+              <ul>
+                {pj.description.map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </section>
 
-      {/* Work Experience */}
       <section>
         <h2>Work Experience</h2>
         {work.map((w, index) => (
           <div key={index}>
             <strong>{w.position}</strong> at {w.company} <br />
-            {w.termStart} – {w.termEnd} <br />
-            Responsibilities: {w.responsibilities}
+            {w.termStart} - {w.termEnd} <br />
+            {w.responsibilities && w.responsibilities.length > 0 && (
+              <ul>
+                {w.responsibilities.map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </section>
 
-      {/* Volunteer */}
       <section>
         <h2>Volunteer Experience</h2>
         {volunteer.map((v, index) => (
           <div key={index}>
             <strong>{v.position}</strong> at {v.organization} <br />
-            {v.termStart} – {v.termEnd} <br />
-            Responsibilities: {v.responsibilities}
+            {v.termStart} - {v.termEnd} <br />
+            {v.responsibilities && v.responsibilities.length > 0 && (
+              <ul>
+                {v.responsibilities.map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </section>

@@ -6,7 +6,8 @@ function Project({ addProject }) {
   const [course, setCourse] = useState('');
   const [termStart, setTermStart] = useState('');
   const [termEnd, setTermEnd] = useState('');
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState([]);
+  const [currDescript, setCurrDescript] = useState('');
   const [present, setPresent] = useState(false);
 
   function handleChange(event){
@@ -27,11 +28,18 @@ function Project({ addProject }) {
       setTermEnd(value);
     } 
     else if (name === 'description') {
-      setDescription(value);
+      setCurrDescript(value);
     }
     else if (name === 'present'){
       setPresent(event.target.checked);
       setTermEnd('');
+    }
+  }
+
+  function addDescription() {
+    if (currDescript.trim() != ''){
+      setDescription([...description, currDescript.trim()]);
+      setCurrDescript('');
     }
   }
 
@@ -42,7 +50,7 @@ function Project({ addProject }) {
       institute,
       course,
       termStart,
-      termEnd,
+      termEnd: present ? 'Present' : termEnd,
       description,
     };
     addProject(newProject);
@@ -51,7 +59,8 @@ function Project({ addProject }) {
     setCourse("");
     setTermStart("");
     setTermEnd("");
-    setDescription("");
+    setDescription([]);
+    setCurrDescript("");
     setPresent(false);
   }
 
@@ -139,11 +148,24 @@ function Project({ addProject }) {
         <input
           type="text"
           name="description"
-          value={description}
+          value={currDescript}
           onChange={handleChange}
           required
         />
       </label>
+      <button type='button' onClick={addDescription}>
+        Add Description
+      </button>
+      <ul>
+        {description.map((desc, index) => (
+          <li key={index}>
+            {desc}
+            <button type="button" onClick={() => setDescription(description.filter((_, i) => i !== index))}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
       <br /><br />
 
       <button type="submit">Add</button>

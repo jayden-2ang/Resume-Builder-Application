@@ -51,6 +51,8 @@ function App(props) {
     setVolunteer((prev) => [...prev, newVolunteer]);
   };
 
+  //const deletePersonal = ();
+
   return (
     <div>
       <h1>Resume Builder App</h1>

@@ -1,13 +1,15 @@
 import '../index.css';
+import React, { forwardRef } from 'react';
 
-function View({ personal, education, skills, projects, work, volunteer }) {
+const View = forwardRef(({ personal, education, skills, projects, work, volunteer,
+  deletePersonal, deleteEducation, deleteSkill, deleteProject, deleteWork, deleteVolunteer }, ref) => {
   return (
-    <div>
+    <div ref={ref}>
       <h1>Resume</h1>
       <div className='header'>
         {personal.map((p, index) => (
           <div key={index}>
-            <strong>{p.name}</strong> <br />
+            <strong>{p.name}</strong> <button onClick={() => deletePersonal && deletePersonal(index)} style={{marginLeft:8}}>Delete</button> <br />
             {p.address} | {p.phone} | {p.email} <br />
             {p.link && p.link.length > 0 && (
               <ul>
@@ -24,7 +26,7 @@ function View({ personal, education, skills, projects, work, volunteer }) {
         <h2>Education</h2>
         {education.map((e, index) => (
           <div key={index}>
-            <strong>{e.institute}</strong>, {e.address} <br />
+            <strong>{e.institute}</strong> <button onClick={() => deleteEducation && deleteEducation(index)} style={{marginLeft:8}}>Delete</button>, {e.address} <br />
             ({e.enrollStart} - {e.enrollEnd})<br />
             <ul>
               <li>Studying {e.study}</li>
@@ -36,7 +38,7 @@ function View({ personal, education, skills, projects, work, volunteer }) {
       <section>
         <h2>Skills: </h2>
           {skills.map((s, index) => (
-            <p key={index}>{s.skill}, </p>
+            <p key={index}>{s.skill} <button onClick={() => deleteSkill && deleteSkill(index)} style={{marginLeft:8}}>Delete</button> </p>
           ))}
       </section>
 
@@ -44,7 +46,7 @@ function View({ personal, education, skills, projects, work, volunteer }) {
         <h2>Projects</h2>
         {projects.map((pj, index) => (
           <div key={index}>
-            <strong>{pj.title}</strong> <br />
+            <strong>{pj.title}</strong> <button onClick={() => deleteProject && deleteProject(index)} style={{marginLeft:8}}>Delete</button> <br />
             ({pj.termStart} - {pj.termEnd}) <br />
             {pj.description && pj.description.length > 0 && (
               <ul>
@@ -61,7 +63,7 @@ function View({ personal, education, skills, projects, work, volunteer }) {
         <h2>Work Experience</h2>
         {work.map((w, index) => (
           <div key={index}>
-            <strong>{w.position}</strong> at {w.company} <br />
+            <strong>{w.position}</strong> at {w.company} <button onClick={() => deleteWork && deleteWork(index)} style={{marginLeft:8}}>Delete</button> <br />
             {w.termStart} - {w.termEnd} <br />
             {w.responsibilities && w.responsibilities.length > 0 && (
               <ul>
@@ -78,8 +80,8 @@ function View({ personal, education, skills, projects, work, volunteer }) {
         <h2>Volunteer Experience</h2>
         {volunteer.map((v, index) => (
           <div key={index}>
-            <strong>{v.position}</strong> at {v.organization} <br />
-            {v.termStart} - {v.termEnd} <br />
+            <strong>{v.position}</strong> at {v.organization} <button onClick={() => deleteVolunteer && deleteVolunteer(index)} style={{marginLeft:8}}>Delete</button> <br />
+            {v.startTerm} - {v.endTerm} <br />
             {v.responsibilities && v.responsibilities.length > 0 && (
               <ul>
                 {v.responsibilities.map((desc, i) => (
@@ -92,6 +94,6 @@ function View({ personal, education, skills, projects, work, volunteer }) {
       </section>
     </div>
   );
-}
+});
 
 export default View;

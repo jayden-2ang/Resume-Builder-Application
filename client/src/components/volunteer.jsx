@@ -130,9 +130,8 @@ function Volunteer({ addVolunteer }) {
 				<input 
 				name="responsibilities" 
 				type="text" 
-				value={responsibilities} 
+				value={currResp} 
 				onChange={handleChange} 
-				required 
 				/>
 			</label>
 			<button type='button' onClick={addResp}>

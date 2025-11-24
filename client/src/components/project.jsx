@@ -118,7 +118,7 @@ function Project({ addProject }) {
       {!present && (
 				<>
       <label>
-        Term Year End (Or expected):
+        Term Year End:
         <input
           type="month"
           name="termEnd"
@@ -150,7 +150,6 @@ function Project({ addProject }) {
           name="description"
           value={currDescript}
           onChange={handleChange}
-          required
         />
       </label>
       <button type='button' onClick={addDescription}>

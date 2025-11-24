@@ -111,7 +111,6 @@ function Personal({ addPersonal }) {
           name="link"
           value={currLink}
           onChange={handleChange}
-          required
         />
       </label>
       <button type='button' onClick={addLink}>

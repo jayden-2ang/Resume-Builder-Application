@@ -129,9 +129,8 @@ function Work({ addWork }) {
         <input
           type="text"
           name="responsibilities"
-          value={responsibilities}
+          value={currResp}
           onChange={handleChange}
-          required
         />
       </label>
       <button type='button' onClick={addResp}>

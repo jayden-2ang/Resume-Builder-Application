@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Personal from './components/personal';
 import Education from './components/education';
 import Skill from './components/skill';
@@ -20,6 +20,7 @@ function App(props) {
 
   const printResume = useReactToPrint({
     content: () => resumeFormat.current,
+    contentRef: resumeFormat,
     documentTitle: 'My Resume',
     pageStyle: `
       @page { size: A4; margin: 20mm; }
@@ -84,23 +85,24 @@ function App(props) {
       <Project addProject={addProject} />
       <Work addWork={addWork} />
       <Volunteer addVolunteer={addVolunteer} />
-      <div ref={printResume}>
-        <View
-          personal={personal}
-          deletePersonal={deletePersonal}
-          education={education}
-          deleteEducation={deleteEducation}
-          skills={skill}
-          deleteSkill={deleteSkill}
-          projects={project}
-          deleteProject={deleteProject}
-          work={work}
-          deleteWork={deleteWork}
-          volunteer={volunteer}
-          deleteVolunteer={deleteVolunteer}
-        />
-        <button type="submit">Generate Resume to PDF</button>
-      </div>
+
+      <View
+        ref={resumeFormat}
+        personal={personal}
+        deletePersonal={deletePersonal}
+        education={education}
+        deleteEducation={deleteEducation}
+        skills={skill}
+        deleteSkill={deleteSkill}
+        projects={project}
+        deleteProject={deleteProject}
+        work={work}
+        deleteWork={deleteWork}
+        volunteer={volunteer}
+        deleteVolunteer={deleteVolunteer}
+      />
+      
+      <button onClick={printResume}>Generate Resume to PDF</button>
     </div>
   );
 }

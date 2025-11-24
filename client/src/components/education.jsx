@@ -79,7 +79,7 @@ function Education({ addEducation }) {
       <label>
         Enrollment Start Date:
         <input
-          type="date"
+          type="month"
           name="enrollStart"
           value={enrollStart}
           onChange={handleChange}
@@ -93,7 +93,7 @@ function Education({ addEducation }) {
         <label>
           Enrollment End Date:
           <input
-            type="date"
+            type="month"
             name="enrollEnd"
             value={enrollEnd}
             onChange={handleChange}

@@ -79,7 +79,7 @@ function Work({ addWork }) {
       <label>
         Date Start:
         <input
-          type="date"
+          type="month"
           name="termStart"
           value={termStart}
           onChange={handleChange}
@@ -93,13 +93,14 @@ function Work({ addWork }) {
       <label>
         Date End:
         <input
-          type="date"
+          type="month"
           name="termEnd"
           value={termEnd}
           onChange={handleChange}
           required
         />
-      </label><br />
+      </label>
+      <br /><br />
       </>
       )}
 

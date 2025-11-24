@@ -5,45 +5,41 @@ function View({ personal, education, skills, projects, work, volunteer }) {
   return (
     <div>
       <h1>Resume</h1>
-      <div>
-        <h2>Personal Information</h2>
+      <div className='header'>
         {personal.map((p, index) => (
           <div key={index}>
             <strong>{p.name}</strong> <br />
-            Email: {p.email} | Phone: {p.phone} <br />
-            Address: {p.address} <br />
-            Link: {p.link}
+            {p.address} | {p.phone} | {p.email} <br />
+            {p.link}
           </div>
         ))}
       </div>
 
-      {/* Education */}
       <section>
         <h2>Education</h2>
         {education.map((e, index) => (
           <div key={index}>
-            <strong>{e.institute}</strong> ({e.enrollStart} – {e.enrollEnd}) <br />
-            {e.study}, {e.address}
+            <strong>{e.institute}</strong>, {e.address} <br />
+            ({e.enrollStart} - {e.enrollEnd})<br />
+            <ul>
+              <li>Studying {e.study}</li>
+            </ul>
           </div>
         ))}
       </section>
 
-      {/* Skills */}
       <section>
-        <h2>Skills</h2>
-        <ul>
+        <h2>Skills: </h2>
           {skills.map((s, index) => (
-            <li key={index}>{s.skill}</li>
+            <p key={index}>{s.skill}, </p>
           ))}
-        </ul>
       </section>
 
-      {/* Projects */}
       <section>
         <h2>Projects</h2>
         {projects.map((pj, index) => (
           <div key={index}>
-            <strong>{pj.title}</strong> ({pj.termStart} – {pj.termEnd}) <br />
+            <strong>{pj.title}</strong> ({pj.termStart} - {pj.termEnd}) <br />
             {pj.description}
           </div>
         ))}

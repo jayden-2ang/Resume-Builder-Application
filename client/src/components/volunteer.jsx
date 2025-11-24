@@ -80,7 +80,7 @@ function Volunteer({ addVolunteer }) {
 				Start Term:
 				<input 
 				name="startTerm" 
-				type="date" 
+				type="month" 
 				value={startTerm} 
 				onChange={handleChange} 
 				required 
@@ -94,7 +94,7 @@ function Volunteer({ addVolunteer }) {
 					Date End:
 					<input 
 					name="endTerm" 
-					type="date" 
+					type="month" 
 					value={endTerm} 
 					onChange={handleChange} 
 					required 

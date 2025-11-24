@@ -97,7 +97,7 @@ function Project({ addProject }) {
       <label>
         Term Year Start:
         <input
-          type="date"
+          type="month"
           name="termStart"
           value={termStart}
           onChange={handleChange}
@@ -111,7 +111,7 @@ function Project({ addProject }) {
       <label>
         Term Year End (Or expected):
         <input
-          type="date"
+          type="month"
           name="termEnd"
           value={termEnd}
           onChange={handleChange}
@@ -125,7 +125,7 @@ function Project({ addProject }) {
       <label>
         Still Working on it?:
         <input
-          type="date"
+          type="checkbox"
           name="present"
           value={present}
           onChange={handleChange}

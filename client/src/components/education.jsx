@@ -109,7 +109,7 @@ function Education({ addEducation }) {
         <input
           type="checkbox"
           name="present"
-          value={present}
+          checked={present}
           onChange={handleChange}
           required
         />

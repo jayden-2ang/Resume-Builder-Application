@@ -7,8 +7,22 @@
   pointer-events: none;
 }
 
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.wrapper .wrapper1{
+  grid-column: 1/2;
+}
+
+.wrapper .wrapper2{
+  grid-column: 2/3;
+}
+
 .delete-btn{
   margin-left: 8;
+  padding: 5px;
   background-color: red;
 }
 

@@ -37,7 +37,7 @@ function Project({ addProject }) {
   }
 
   function addDescription() {
-    if (currDescript.trim() != ''){
+    if (currDescript.trim() !== ''){
       setDescription([...description, currDescript.trim()]);
       setCurrDescript('');
     }

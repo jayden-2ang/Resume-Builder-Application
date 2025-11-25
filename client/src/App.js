@@ -8,6 +8,7 @@ import Volunteer from './components/volunteer';
 import View from './components/view';
 import axios from 'axios';
 import { useReactToPrint } from 'react-to-print';
+import './App.css';
 
 function App(props) {
   const [personal, setPersonal] = useState([]);
@@ -53,40 +54,43 @@ function App(props) {
   };
 
   const deletePersonal = (personalToDelete) => {
-    setPersonal((prev) => prev.filter((_, index) => index != personalToDelete));
+    setPersonal((prev) => prev.filter((_, index) => index !== personalToDelete));
   };
 
   const deleteEducation = (educationToDelete) => {
-    setEducation((prev) => prev.filter((_, index) => index != educationToDelete));
+    setEducation((prev) => prev.filter((_, index) => index !== educationToDelete));
   };
 
   const deleteSkill = (skillToDelete) => {
-    setSkill((prev) => prev.filter((_, index) => index != skillToDelete));
+    setSkill((prev) => prev.filter((_, index) => index !== skillToDelete));
   };
 
   const deleteProject = (projectToDelete) => {
-    setProject((prev) => prev.filter((_, index) => index != projectToDelete));
+    setProject((prev) => prev.filter((_, index) => index !== projectToDelete));
   };
 
   const deleteWork = (workToDelete) => {
-    setWork((prev) => prev.filter((_, index) => index != workToDelete));
+    setWork((prev) => prev.filter((_, index) => index !== workToDelete));
   };
 
   const deleteVolunteer = (volunteerToDelete) => {
-    setVolunteer((prev) => prev.filter((_, index) => index != volunteerToDelete));
+    setVolunteer((prev) => prev.filter((_, index) => index !== volunteerToDelete));
   };
 
   return (
-    <div>
-      <h1>Resume Builder App</h1>
-      <Personal addPersonal={addPersonal} />
-      <Education addEducation={addEducation} />
-      <Skill addSkill={addSkill} />
-      <Project addProject={addProject} />
-      <Work addWork={addWork} />
-      <Volunteer addVolunteer={addVolunteer} />
+    <div className='wrapper'>
+      <div className='wrapper1'>
+        <h1>Resume Builder App</h1>
+        <Personal addPersonal={addPersonal} />
+        <Education addEducation={addEducation} />
+        <Skill addSkill={addSkill} />
+        <Project addProject={addProject} />
+        <Work addWork={addWork} />
+        <Volunteer addVolunteer={addVolunteer} />
+      </div>
 
       <View
+        className='wrapper2'
         ref={resumeFormat}
         personal={personal}
         deletePersonal={deletePersonal}

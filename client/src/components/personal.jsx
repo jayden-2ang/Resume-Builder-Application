@@ -28,7 +28,7 @@ function Personal({ addPersonal }) {
   }
 
   function addLink() {
-    if (currLink.trim() != ''){
+    if (currLink.trim() !== ''){
       setLink([...link, currLink.trim()]);
       setCurrLink('');
     }

@@ -5,10 +5,11 @@ const View = forwardRef(({ personal, education, skills, projects, work, voluntee
   deletePersonal, deleteEducation, deleteSkill, deleteProject, deleteWork, deleteVolunteer }, ref) => {
   return (
     <div ref={ref}>
-      <div className='header'>
+      <section className='header'>
+        <h2>Personal</h2>
         {personal.map((p, index) => (
           <div key={index}>
-            <h2>{p.name}</h2> <button className='delete-btn' onClick={() => deletePersonal && deletePersonal(index)}>Delete</button> <br />
+            <strong>{p.name}</strong><br /><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(index)}>Delete</button> <br />
             {p.address} | {p.phone} | {p.email} <br />
             {p.link && p.link.length > 0 && (
               <ul>
@@ -19,7 +20,7 @@ const View = forwardRef(({ personal, education, skills, projects, work, voluntee
             )}
           </div>
         ))}
-      </div>
+      </section>
 
       <section>
         <h2>Education</h2>

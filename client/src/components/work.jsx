@@ -33,7 +33,7 @@ function Work({ addWork }) {
   }
 
   function addResp() {
-		if (currResp.trim() != ''){
+		if (currResp.trim() !== ''){
 		setResponsibilities([...responsibilities, currResp.trim()]);
 		setCurrResp('');
 		}

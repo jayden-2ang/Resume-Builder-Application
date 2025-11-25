@@ -89,24 +89,25 @@ function App(props) {
         <Volunteer addVolunteer={addVolunteer} />
       </div>
 
-      <View
-        className='wrapper2'
-        ref={resumeFormat}
-        personal={personal}
-        deletePersonal={deletePersonal}
-        education={education}
-        deleteEducation={deleteEducation}
-        skills={skill}
-        deleteSkill={deleteSkill}
-        projects={project}
-        deleteProject={deleteProject}
-        work={work}
-        deleteWork={deleteWork}
-        volunteer={volunteer}
-        deleteVolunteer={deleteVolunteer}
-      />
-      
-      <button onClick={printResume}>Generate Resume to PDF</button>
+      <div className='wrapper2'>
+        <View
+          ref={resumeFormat}
+          personal={personal}
+          deletePersonal={deletePersonal}
+          education={education}
+          deleteEducation={deleteEducation}
+          skills={skill}
+          deleteSkill={deleteSkill}
+          projects={project}
+          deleteProject={deleteProject}
+          work={work}
+          deleteWork={deleteWork}
+          volunteer={volunteer}
+          deleteVolunteer={deleteVolunteer}
+        />
+        
+        <button onClick={printResume}>Generate Resume to PDF</button>
+      </div>
     </div>
   );
 }

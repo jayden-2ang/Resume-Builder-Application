@@ -7,16 +7,23 @@
   pointer-events: none;
 }
 
-.header{
+.delete-btn{
+  margin-left: 8;
+  background-color: red;
+}
+
+@media print {
+  .delete-btn{
+    display: none;
+  }
+
+  .header{
   position: fixed;
   top: 0;
   text-align: center;
   border-bottom: 1px black solid;
   padding: 5px;
 }
-
-.btn{
-  margin-left: 8;
 }
 
 @media (prefers-reduced-motion: no-preference) {

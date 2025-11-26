@@ -21,7 +21,12 @@ mongoose
     .catch((error) => console.error('MongoDB connection error:', error));
 
 // Routes placeholder
-app.use('/models', todosRouter);
+app.use('/api/personal', personalRoutes);
+app.use('/api/education', educationRoutes);
+app.use('/api/skill', skillRoutes);
+app.use('/api/project', projectRoutes);
+app.use('/api/work', workRoutes);
+app.use('/api/volunteer', volunteerRoutes);
 
 // Start the server
 app.listen(PORT, () => {

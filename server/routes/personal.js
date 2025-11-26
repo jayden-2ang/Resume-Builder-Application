@@ -2,21 +2,11 @@ const express = require('express');
 const Personal = require('../models/Personal');
 const router = express.Router();
 
-// GET all personal
+// GET personal
 router.get('/', async (req, res) => {
     try {
         const personal = await Personal.find();
         res.json(personal);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// GET personal by ID
-router.get('/:id', async (req, res) => {
-    try {
-        const per = await Personal.findById(req.params.id);
-        res.json(per);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

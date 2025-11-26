@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Personal({ addPersonal }) {
+function Personal({ addPersonal, personal }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -127,7 +127,7 @@ function Personal({ addPersonal }) {
         ))}
       </ul>
       <br /><br />
-      <button type="submit">Add</button>
+      { personal && personal.length > 0 ? (<p>Only 1 Personal component allowed. Delete existing to edit.</p>) : <button type="submit">Add</button>}
     </form>
   );
 }

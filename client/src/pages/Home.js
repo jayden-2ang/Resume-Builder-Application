@@ -155,7 +155,7 @@ function Home() {
     <div className='wrapper'>
       <div className='wrapper1'>
         <h1>Resume Builder App</h1>
-        <Personal addPersonal={addPersonal} />
+        <Personal addPersonal={addPersonal} personal={personal} />
         <Education addEducation={addEducation} />
         <Skill addSkill={addSkill} />
         <Project addProject={addProject} />

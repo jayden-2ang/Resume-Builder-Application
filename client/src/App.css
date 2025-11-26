@@ -7,6 +7,33 @@
   pointer-events: none;
 }
 
+.nav-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #282c34;
+  padding: 15px;
+}
+
+.logo {
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
 body{
   background-color: lightblue;
 }

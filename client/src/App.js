@@ -29,53 +29,19 @@ function App(props) {
     `,
   });
 
-  const addPersonal = (newPersonal) => {
-    setPersonal((prev) => [...prev, newPersonal]);
-  };
+  const addPersonal = (newPersonal) => setPersonal((prev) => [...prev, newPersonal]);
+  const addEducation = (newEducation) => setEducation((prev) => [...prev, newEducation]);
+  const addSkill = (newSkill) => setSkill((prev) => [...prev, newSkill]);
+  const addProject = (newProject) => setProject((prev) => [...prev, newProject]);
+  const addWork = (newWork) => setWork((prev) => [...prev, newWork]);
+  const addVolunteer = (newVolunteer) => setVolunteer((prev) => [...prev, newVolunteer]);
 
-  const addEducation = (newEducation) => {
-    setEducation((prev) => [...prev, newEducation]);
-  };
-
-  const addSkill = (newSkill) => {
-    setSkill((prev) => [...prev, newSkill]);
-  };
-
-  const addProject = (newProject) => {
-    setProject((prev) => [...prev, newProject]);
-  };
-
-  const addWork = (newWork) => {
-    setWork((prev) => [...prev, newWork]);
-  };
-
-  const addVolunteer = (newVolunteer) => {
-    setVolunteer((prev) => [...prev, newVolunteer]);
-  };
-
-  const deletePersonal = (personalToDelete) => {
-    setPersonal((prev) => prev.filter((_, index) => index !== personalToDelete));
-  };
-
-  const deleteEducation = (educationToDelete) => {
-    setEducation((prev) => prev.filter((_, index) => index !== educationToDelete));
-  };
-
-  const deleteSkill = (skillToDelete) => {
-    setSkill((prev) => prev.filter((_, index) => index !== skillToDelete));
-  };
-
-  const deleteProject = (projectToDelete) => {
-    setProject((prev) => prev.filter((_, index) => index !== projectToDelete));
-  };
-
-  const deleteWork = (workToDelete) => {
-    setWork((prev) => prev.filter((_, index) => index !== workToDelete));
-  };
-
-  const deleteVolunteer = (volunteerToDelete) => {
-    setVolunteer((prev) => prev.filter((_, index) => index !== volunteerToDelete));
-  };
+  const deletePersonal = (personalToDelete) => setPersonal((prev) => prev.filter((_, index) => index !== personalToDelete));
+  const deleteEducation = (educationToDelete) => setEducation((prev) => prev.filter((_, index) => index !== educationToDelete));
+  const deleteSkill = (skillToDelete) => setSkill((prev) => prev.filter((_, index) => index !== skillToDelete));
+  const deleteProject = (projectToDelete) => setProject((prev) => prev.filter((_, index) => index !== projectToDelete));
+  const deleteWork = (workToDelete) => setWork((prev) => prev.filter((_, index) => index !== workToDelete));
+  const deleteVolunteer = (volunteerToDelete) => setVolunteer((prev) => prev.filter((_, index) => index !== volunteerToDelete));
 
   return (
     <div className='wrapper'>

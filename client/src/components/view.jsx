@@ -11,7 +11,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
           <div key={p._id}>
             <h1>{p.name}</h1><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button> <br />
             {p.address} | {p.phone} | {p.email} <br />
-            {p.link && p.link.length > 0 && (
+            {p.link?.length > 0 && (
               <ul>
                 {p.link.map((desc, i) => (
                   <li key={i}>{desc}</li>
@@ -37,7 +37,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
 
       <section>
         <h2>Skills: </h2>
-          {skill.map((s) => (
+          {skill?.map((s) => (
             <p key={s._id}>{s.skill} <button className='delete-btn' onClick={() => deleteSkill && deleteSkill(s._id)}>Delete</button> </p>
           ))}
       </section>
@@ -48,7 +48,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
           <div key={pj._id}>
             <strong>{pj.title}</strong> <button className='delete-btn' onClick={() => deleteProject && deleteProject(pj._id)}>Delete</button> <br />
             {pj.course} | ({pj.termStart} - {pj.termEnd}) | {pj.institute}<br />
-            {pj.description && pj.description.length > 0 && (
+            {pj.description?.length > 0 && (
               <ul>
                 {pj.description.map((desc, i) => (
                   <li key={i}>{desc}</li>
@@ -65,7 +65,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
           <div key={w._id}>
             <strong>{w.position}</strong> at {w.company} <button className='delete-btn' onClick={() => deleteWork && deleteWork(w._id)}>Delete</button> <br />
             {w.termStart} - {w.termEnd} <br />
-            {w.responsibilities && w.responsibilities.length > 0 && (
+            {w.responsibilities?.length > 0 && (
               <ul>
                 {w.responsibilities.map((desc, i) => (
                   <li key={i}>{desc}</li>
@@ -82,7 +82,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
           <div key={v._id}>
             <strong>{v.position}</strong> at {v.organization} <button className='delete-btn' onClick={() => deleteVolunteer && deleteVolunteer(v._id)}>Delete</button> <br />
             {v.startTerm} - {v.endTerm} <br />
-            {v.responsibilities && v.responsibilities.length > 0 && (
+            {v.responsibilities?.length > 0 && (
               <ul>
                 {v.responsibilities.map((desc, i) => (
                   <li key={i}>{desc}</li>

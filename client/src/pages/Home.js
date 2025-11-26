@@ -46,6 +46,7 @@ function Home() {
   const printResume = useReactToPrint({
     content: () => resumeFormat.current,
     documentTitle: 'My Resume',
+    contentRef: resumeFormat,
     pageStyle: `
       @page { size: A4; margin: 20mm; }
       body { -webkit-print-color-adjust: exact; }
@@ -178,7 +179,15 @@ function Home() {
           volunteer={volunteer}
           deleteVolunteer={deleteVolunteer}
         />
-        <button onClick={printResume}>Generate Resume to PDF</button>
+        <button
+          onClick={() => {
+            console.log("resumeFormat.current:", resumeFormat.current);
+            printResume();
+          }}
+        >
+          Generate Resume to PDF
+        </button>
+
       </div>
     </div>
   );

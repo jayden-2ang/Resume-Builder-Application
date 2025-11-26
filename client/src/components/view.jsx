@@ -9,7 +9,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
         <h2>Personal</h2>
         {personal.map((p) => (
           <div key={p._id}>
-            <strong>{p.name}</strong><br /><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button> <br />
+            <h1>{p.name}</h1><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button> <br />
             {p.address} | {p.phone} | {p.email} <br />
             {p.link && p.link.length > 0 && (
               <ul>
@@ -47,7 +47,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
         {projects.map((pj) => (
           <div key={pj._id}>
             <strong>{pj.title}</strong> <button className='delete-btn' onClick={() => deleteProject && deleteProject(pj._id)}>Delete</button> <br />
-            ({pj.termStart} - {pj.termEnd}) <br />
+            {pj.course} | ({pj.termStart} - {pj.termEnd}) | {pj.institute}<br />
             {pj.description && pj.description.length > 0 && (
               <ul>
                 {pj.description.map((desc, i) => (

@@ -116,7 +116,7 @@ function Home() {
 
   const deletePersonal = (id) => {
     apiDeletePersonal(id)
-      .then(() => setProject((prev) => prev.filter((e) => e._id !== id)))
+      .then(() => setPersonal((prev) => prev.filter((e) => e._id !== id)))
       .catch((error) => console.error(error));
   };
 
@@ -169,7 +169,7 @@ function Home() {
           deletePersonal={deletePersonal}
           education={education}
           deleteEducation={deleteEducation}
-          skills={skill}
+          skill={skill}
           deleteSkill={deleteSkill}
           projects={project}
           deleteProject={deleteProject}

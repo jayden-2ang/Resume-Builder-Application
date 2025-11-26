@@ -179,15 +179,7 @@ function Home() {
           volunteer={volunteer}
           deleteVolunteer={deleteVolunteer}
         />
-        <button
-          onClick={() => {
-            console.log("resumeFormat.current:", resumeFormat.current);
-            printResume();
-          }}
-        >
-          Generate Resume to PDF
-        </button>
-
+        <button onClick={printResume}>Generate Resume to PDF</button>
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const VolunteerSchema = new mongoose.Schema({
     position: { type: String },
     organization: { type: String },
-    termStart: { type: String },
-    termEnd: { type: String },
+    startTerm: { type: String },
+    endTerm: { type: String },
     responsibilities: { type: [String] },
 });
 

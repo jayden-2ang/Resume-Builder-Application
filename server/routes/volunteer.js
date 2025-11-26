@@ -27,8 +27,8 @@ router.post('/', async (req, res) => {
     const newVol = new Volunteer({
         position: req.body.position,
         organization: req.body.organization,
-        termStart: req.body.termStart,
-        termEnd: req.body.termEnd,
+        startTerm: req.body.startTerm,
+        endTerm: req.body.endTerm,
         responsibilities: req.body.responsibilities,
     });
     try {

@@ -1,8 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
 
-const todosRouter = require('./routes/todos');
+const personalRoutes = require('./routes/personal');
+const educationRoutes = require('./routes/education');
+const skillRoutes = require('./routes/skill');
+const projectRoutes = require('./routes/project');
+const workRoutes = require('./routes/work');
+const volunteerRoutes = require('./routes/volunteer');
 
 const app = express();
 const PORT = process.env.PORT || 5001;

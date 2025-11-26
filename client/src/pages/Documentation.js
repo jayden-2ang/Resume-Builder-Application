@@ -14,3 +14,5 @@ function Documentation(){
         </div>
     );
 }
+
+export default Documentation;

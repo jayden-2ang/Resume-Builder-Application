@@ -102,8 +102,8 @@ function Volunteer({ addVolunteer }) {
 				<label>
 					Date End:
 					<input 
-					name="endTerm" 
 					type="month" 
+					name="endTerm" 
 					value={endTerm} 
 					onChange={handleChange} 
 					required 
@@ -116,8 +116,8 @@ function Volunteer({ addVolunteer }) {
 			<label>
 				Still Volunteering?:
 				<input 
-				name="current" 
-				type="checkbox" 
+				type="checkbox"
+				name="current"  
 				checked={current} 
 				onChange={handleChange} 
 				/>

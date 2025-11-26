@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const wor = await Work.findById(req.params.id);
-        res.json(wo);
+        res.json(wor);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

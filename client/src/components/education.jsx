@@ -111,7 +111,6 @@ function Education({ addEducation }) {
           name="present"
           checked={present}
           onChange={handleChange}
-          required
         />
       </label>
       <br /><br />

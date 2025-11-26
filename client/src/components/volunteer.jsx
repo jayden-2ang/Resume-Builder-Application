@@ -120,7 +120,6 @@ function Volunteer({ addVolunteer }) {
 				type="checkbox" 
 				checked={current} 
 				onChange={handleChange} 
-				required 
 				/>
 			</label>
 			<br /><br />

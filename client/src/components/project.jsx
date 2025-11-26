@@ -138,7 +138,6 @@ function Project({ addProject }) {
           name="present"
           checked={present}
           onChange={handleChange}
-          required
         />
       </label>
       <br /><br />

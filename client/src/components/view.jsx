@@ -4,12 +4,12 @@ import '../App.css';
 const View = forwardRef(({ personal, education, skill, projects, work, volunteer,
   deletePersonal, deleteEducation, deleteSkill, deleteProject, deleteWork, deleteVolunteer }, ref) => {
   return (
-    <div ref={ref}>
+    <div ref={ref} className='content'>
       <section className='header'>
         <h2>Personal</h2>
         {personal.map((p) => (
           <div key={p._id}>
-            <h1>{p.name}</h1><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button> <br />
+            <h1>{p.name}</h1><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button>
             {p.address} | {p.phone} | {p.email} <br />
             {p.link?.length > 0 && (
               <ul>

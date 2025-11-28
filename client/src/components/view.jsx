@@ -9,7 +9,7 @@ const View = forwardRef(({ personal, education, skill, projects, work, volunteer
         <h2>Personal</h2>
         {personal.map((p) => (
           <div key={p._id}>
-            <h1>{p.name}</h1><button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button>
+            <h1>{p.name} <button className='delete-btn' onClick={() => deletePersonal && deletePersonal(p._id)}>Delete</button></h1>
             {p.address} | {p.phone} | {p.email} <br />
             {p.link?.length > 0 && (
               <ul>

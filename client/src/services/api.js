@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = 'https://resume-builder-application-backend.onrender.com/';
 
 export const getPersonal = () => axios.get(`${API_URL}/personal`);
 export const addPersonal = (data) => axios.post(`${API_URL}/personal`, data);

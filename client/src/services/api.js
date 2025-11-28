@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://resume-builder-application-backend.onrender.com/';
+const API_URL = 'https://resume-builder-application-backend.onrender.com';
 //For local state: http://localhost:5001/api
 
 export const getPersonal = () => axios.get(`${API_URL}/personal`);

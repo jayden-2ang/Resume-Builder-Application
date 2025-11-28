@@ -12,9 +12,12 @@ const volunteerRoutes = require('./routes/volunteer');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+const frontendURL = 'https://resume-builder-application-frontend.onrender.com/';
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: frontendURL
+}));
 app.use(express.json());
 
 // Connect to MongoDB
